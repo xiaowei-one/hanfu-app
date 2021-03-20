@@ -29,9 +29,7 @@
             android:id="@+id/tabs_index"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            app:tabIndicatorColor="@color/iconColor"
-            app:tabIndicatorFullWidth="false"
-            app:tabIndicatorHeight="2dp"
+            app:tabIndicatorHeight="0dp"
             app:tabRippleColor="@android:color/transparent"
             app:tabSelectedTextColor="@color/iconColor"
             app:tabTextColor="@color/textColor" />
