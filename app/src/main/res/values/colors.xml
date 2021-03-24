@@ -10,4 +10,7 @@
     <color name="textColor">#505050</color>
     <color name="iconColor">#EC6250</color>
     <color name="tabColor">#F48071</color>
+    <color name="spotColor">#6F34F8</color>
+    <color name="nameGirlColor">#ffaaaa</color>
+    <color name="iconGirlColor">#D62E81</color>
 </resources>

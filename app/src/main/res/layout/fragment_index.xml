@@ -53,7 +53,8 @@
             android:gravity="center"
             android:text="&#xe611;"
             android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:textSize="28sp" />
+
     </LinearLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

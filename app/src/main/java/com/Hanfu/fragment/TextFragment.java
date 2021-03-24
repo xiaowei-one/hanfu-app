@@ -2,23 +2,33 @@ package com.Hanfu.fragment;
 
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.Hanfu.R;
-import com.Hanfu.adapter.HotAdapter;
+import com.Hanfu.utils.Utils;
+
+import static android.content.Context.INPUT_METHOD_SERVICE;
+import static com.Hanfu.utils.Utils.commentAnimate;
+import static com.Hanfu.utils.Utils.hideInput;
+import static com.Hanfu.utils.Utils.showInput;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link PartyFragment#newInstance} factory method to
+ * Use the {@link TextFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PartyFragment extends Fragment {
+public class TextFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,7 +39,7 @@ public class PartyFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public PartyFragment() {
+    public TextFragment() {
         // Required empty public constructor
     }
 
@@ -39,11 +49,11 @@ public class PartyFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment PartyFragment.
+     * @return A new instance of fragment TextFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PartyFragment newInstance(String param1, String param2) {
-        PartyFragment fragment = new PartyFragment();
+    public static TextFragment newInstance(String param1, String param2) {
+        TextFragment fragment = new TextFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,19 +73,22 @@ public class PartyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_text, container, false);
+        ConstraintLayout article_root = view.findViewById(R.id.article_root);
+        LinearLayout article_page = view.findViewById(R.id.article_page);
+        EditText text_comment = view.findViewById(R.id.text_comment);
+        LinearLayout comment_icon = view.findViewById(R.id.comment_icon);
+        CardView send_comment = view.findViewById(R.id.send_comment);
 
-        View view = inflater.inflate(R.layout.fragment_party, container, false);
-        RecyclerView hot_wear = view.findViewById(R.id.hot_wear);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
-        hot_wear.setLayoutManager(linearLayoutManager);
-        HotAdapter hotAdapter = new HotAdapter(getContext());
-        hot_wear.setAdapter(hotAdapter);
+        article_page.setOnClickListener(v -> {
+            text_comment.clearFocus();
+        });
 
-        RecyclerView hot_party = view.findViewById(R.id.hot_party);
-        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
-        hot_party.setLayoutManager(linearLayoutManager1);
-        HotAdapter hotAdapter1 = new HotAdapter(getContext());
-        hot_party.setAdapter(hotAdapter1);
+        article_root.setOnClickListener(v -> {
+            text_comment.clearFocus();
+        });
+
+        commentAnimate(getActivity(), getContext(), text_comment, comment_icon, send_comment);
 
         return view;
     }

@@ -5,48 +5,44 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.Hanfu.R;
-import com.Hanfu.pages.ArticleActivity;
 
 import java.util.List;
 
-public class ShortVideoAdapter extends RecyclerView.Adapter<ShortVideoAdapter.ViewHolder> {
+public class PartyRankAdapter extends RecyclerView.Adapter<PartyRankAdapter.ViewHolder> {
     List mList;
     Context context;
     String mDrawableName;
 
-    public ShortVideoAdapter(Context context) {
+    public PartyRankAdapter(Context context) {
         this.context = context;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.index_short_video_item, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.party_rank_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(itemView);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Intent intent = new Intent(context, ArticleActivity.class);
+
         holder.itemView.setOnClickListener(v -> {
-            intent.putExtra("articleType", "shortVideo");
-            context.startActivity(intent);
+
         });
 
     }

@@ -1,5 +1,8 @@
 package com.Hanfu.pages.ui.index;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.Hanfu.R;
-import com.Hanfu.adapter.RecyclerAdapter;
+import com.Hanfu.adapter.RecommendRecyclerAdapter;
 import com.scwang.smart.refresh.footer.BallPulseFooter;
 import com.scwang.smart.refresh.header.MaterialHeader;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
@@ -67,7 +70,7 @@ public class RecommendFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(1, 1);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
-        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(getContext());
+        RecommendRecyclerAdapter recyclerAdapter = new RecommendRecyclerAdapter(getContext());
         recyclerView.setAdapter(recyclerAdapter);
         return view;
     }

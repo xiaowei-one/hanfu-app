@@ -2,20 +2,27 @@ package com.Hanfu.fragment;
 
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import com.Hanfu.R;
 
+import static com.Hanfu.utils.Utils.commentAnimate;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FollowFragment#newInstance} factory method to
+ * Use the {@link ShortVideoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FollowFragment extends Fragment {
+public class ShortVideoFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +33,7 @@ public class FollowFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public FollowFragment() {
+    public ShortVideoFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +43,11 @@ public class FollowFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FollowFragment.
+     * @return A new instance of fragment ShortVideoFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static FollowFragment newInstance(String param1, String param2) {
-        FollowFragment fragment = new FollowFragment();
+    public static ShortVideoFragment newInstance(String param1, String param2) {
+        ShortVideoFragment fragment = new ShortVideoFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,7 +67,23 @@ public class FollowFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recommend, container, false);
+        View view = inflater.inflate(R.layout.fragment_short_video, container, false);
+
+        LinearLayout article_root = view.findViewById(R.id.short_video_root);
+        FrameLayout article_page = view.findViewById(R.id.short_video_page);
+        EditText text_comment = view.findViewById(R.id.text_comment);
+        LinearLayout comment_icon = view.findViewById(R.id.comment_icon);
+        CardView send_comment = view.findViewById(R.id.send_comment);
+
+        article_page.setOnClickListener(v -> {
+            text_comment.clearFocus();
+        });
+
+        article_root.setOnClickListener(v -> {
+            text_comment.clearFocus();
+        });
+
+        commentAnimate(getActivity(), getContext(), text_comment, comment_icon, send_comment);
+        return view;
     }
 }

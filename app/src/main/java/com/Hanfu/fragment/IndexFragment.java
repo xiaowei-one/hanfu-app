@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.Hanfu.R;
-import com.Hanfu.pages.ui.index.SectionsPagerAdapter;
+import com.Hanfu.pages.ui.index.RecommendAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 /**
@@ -39,13 +39,11 @@ public class IndexFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_index, container, false);
-
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getContext(), getChildFragmentManager());
+        RecommendAdapter recommendAdapter = new RecommendAdapter(getContext(), getChildFragmentManager());
         ViewPager viewPager = view.findViewById(R.id.view_pager);
-        viewPager.setAdapter(sectionsPagerAdapter);
+        viewPager.setAdapter(recommendAdapter);
         TabLayout tabs = view.findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
-
         return view;
     }
 }

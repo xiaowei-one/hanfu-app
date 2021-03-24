@@ -3,19 +3,23 @@ package com.Hanfu.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.Hanfu.R;
+import com.Hanfu.adapter.PartyRankAdapter;
+import com.Hanfu.adapter.ShortVideoAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FollowFragment#newInstance} factory method to
+ * Use the {@link PartyRankFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FollowFragment extends Fragment {
+public class PartyRankFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +30,7 @@ public class FollowFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public FollowFragment() {
+    public PartyRankFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +40,11 @@ public class FollowFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FollowFragment.
+     * @return A new instance of fragment PartyRankFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static FollowFragment newInstance(String param1, String param2) {
-        FollowFragment fragment = new FollowFragment();
+    public static PartyRankFragment newInstance(String param1, String param2) {
+        PartyRankFragment fragment = new PartyRankFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,7 +64,14 @@ public class FollowFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recommend, container, false);
+        View view = inflater.inflate(R.layout.fragment_party_rank, container, false);
+
+        RecyclerView recyclerView = view.findViewById(R.id.party_rank_list);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        PartyRankAdapter partyRankAdapter = new PartyRankAdapter(getContext());
+        recyclerView.setAdapter(partyRankAdapter);
+
+        return view;
     }
 }

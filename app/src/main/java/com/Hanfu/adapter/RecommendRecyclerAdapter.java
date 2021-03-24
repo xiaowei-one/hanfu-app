@@ -5,36 +5,45 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.Hanfu.R;
+import com.Hanfu.pages.ArticleActivity;
+import com.Hanfu.pages.MainActivity;
 
 import java.util.List;
 import java.util.Random;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class RecommendRecyclerAdapter extends RecyclerView.Adapter<RecommendRecyclerAdapter.ViewHolder> {
     List mList;
     Context context;
     String mDrawableName;
+    int randomNum;
 
-    public RecyclerAdapter(Context context) {
+    public RecommendRecyclerAdapter(Context context) {
         this.context = context;
     }
 
     @NonNull
     @Override
-    public RecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecommendRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = null;
         Random random = new Random();
         if (viewType < 1) {
@@ -48,7 +57,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             recyclerView.setAdapter(shortVideoAdapter);
         } else if (viewType > 1) {
             int[] Numbers = {0, 0, 1, 0, 1, 0, 0, 0, 1};
-            int randomNum = Numbers[random.nextInt(9)];
+            randomNum = Numbers[random.nextInt(9)];
             if (randomNum == 1) {
                 itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.index_long_video, parent, false);
             } else {
@@ -60,12 +69,22 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerAdapter.ViewHolder holder, int position) {
-
-        holder.itemView.setOnClickListener(v -> {
-
-        });
-
+    public void onBindViewHolder(@NonNull RecommendRecyclerAdapter.ViewHolder holder, int position) {
+        Intent intent = new Intent(context, ArticleActivity.class);
+        intent.putExtra("articleType", "text");
+        if (position < 1 || (position > 1 && randomNum == 0)) {
+            TextView article_text_text = holder.itemView.findViewById(R.id.article_text_text);
+            article_text_text.setOnClickListener(v -> {
+                intent.putExtra("articleType", "text");
+                context.startActivity(intent);
+            });
+        } else if (position != 1) {
+            LinearLayout article_long_video = holder.itemView.findViewById(R.id.article_long_video);
+            article_long_video.setOnClickListener(v -> {
+                intent.putExtra("articleType", "longVideo");
+                context.startActivity(intent);
+            });
+        }
     }
 
     @Override
