@@ -1,14 +1,30 @@
 package com.Hanfu.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.Hanfu.R;
+import com.Hanfu.adapter.ShoppingListsAdapter;
+import com.Hanfu.domain.IconPowerMenuItem;
+import com.Hanfu.pages.SearchActivity;
+import com.Hanfu.utils.IconMenuAdapter;
+import com.skydoves.powermenu.CustomPowerMenu;
+import com.skydoves.powermenu.MenuAnimation;
+import com.skydoves.powermenu.OnMenuItemClickListener;
+
+import static com.Hanfu.utils.Utils.px2dip;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +37,13 @@ public class ShoppingFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    private CustomPowerMenu customPowerMenu;
+
+    private final OnMenuItemClickListener<IconPowerMenuItem> onIconMenuItemClickListener = (position, item) -> {
+        Toast.makeText(getContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
+        customPowerMenu.dismiss();
+    };
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -60,7 +83,50 @@ public class ShoppingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_shopping, container, false);
+        View view = inflater.inflate(R.layout.fragment_shopping, container, false);
+
+        //选择查询条件部分
+        customPowerMenu = new CustomPowerMenu.Builder<>(getContext(), new IconMenuAdapter())
+                .addItem(new IconPowerMenuItem(ContextCompat.getDrawable(getContext(), R.mipmap.add_text), "出售商品"))
+                .addItem(new IconPowerMenuItem(ContextCompat.getDrawable(getContext(), R.mipmap.add_text), "我的出售"))
+                .addItem(new IconPowerMenuItem(ContextCompat.getDrawable(getContext(), R.mipmap.add_video1), "我的收藏"))
+                .addItem(new IconPowerMenuItem(ContextCompat.getDrawable(getContext(), R.mipmap.drafts), "我的订单"))
+                .setOnMenuItemClickListener(onIconMenuItemClickListener)
+                .setAnimation(MenuAnimation.SHOWUP_TOP_RIGHT)
+                .setWidth(450)
+                .setMenuRadius(10f)
+                .setMenuShadow(10f)
+                .setPadding(px2dip(getContext(), 60))
+                .build();
+
+//        加号
+        TextView add_shopping = view.findViewById(R.id.add_shopping);
+        add_shopping.setOnClickListener(v -> {
+            onCustom(v);
+        });
+
+        CardView search_shopping = view.findViewById(R.id.search_shopping);
+        search_shopping.setOnClickListener(v->{
+            Intent intent_search = new Intent(getContext(), SearchActivity.class);
+            intent_search.putExtra("type", "shopping");
+            startActivity(intent_search);
+        });
+
+        RecyclerView shopping_lists = view.findViewById(R.id.shopping_lists);
+        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, 1);
+        shopping_lists.setLayoutManager(staggeredGridLayoutManager);
+        ShoppingListsAdapter shoppingListsAdapter = new ShoppingListsAdapter(getContext());
+        shopping_lists.setAdapter(shoppingListsAdapter);
+
+        return view;
+    }
+
+    //选择查询条件部分
+    public void onCustom(View view) {
+        if (customPowerMenu.isShowing()) {
+            customPowerMenu.dismiss();
+            return;
+        }
+        customPowerMenu.showAsDropDown(view);
     }
 }

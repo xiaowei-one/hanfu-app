@@ -9,8 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hanfu">
-        <activity android:name=".pages.PartyActivity"></activity>
-        <activity android:name=".pages.ArticleActivity"></activity>
+        <activity android:name=".pages.QuestionTypeActivity"></activity>
+        <activity android:name=".pages.SearchActivity" />
+        <activity android:name=".pages.ShoppingActivity" />
+        <activity android:name=".pages.PartyActivity" />
+        <activity android:name=".pages.ArticleActivity" />
         <activity android:name=".pages.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

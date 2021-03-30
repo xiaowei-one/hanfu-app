@@ -32,9 +32,9 @@ public class RecommendAdapter extends FragmentPagerAdapter {
         if (position == 0) {
             return RecommendFragment.newInstance(position + 1);
         } else if (position == 1) {
-            return RecommendFragment.newInstance(position + 1);
+            return FollowFragment.newInstance("1", "2");
         } else {
-            return RecommendFragment.newInstance(position + 1);
+            return InterestFragment.newInstance("1", "2");
         }
     }
 

@@ -13,4 +13,7 @@
     <color name="spotColor">#6F34F8</color>
     <color name="nameGirlColor">#ffaaaa</color>
     <color name="iconGirlColor">#D62E81</color>
+    <color name="iconBoyColor">#4FA2D8</color>
+    <color name="competitionBack">#FFEB3B</color>
+    <color name="competitionBackground">#27B5FF</color>
 </resources>

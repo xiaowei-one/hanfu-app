@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.Hanfu.R;
 
@@ -78,12 +79,18 @@ public class LongVideoFragment extends Fragment {
         LinearLayout comment_icon = view.findViewById(R.id.comment_icon);
         CardView send_comment = view.findViewById(R.id.send_comment);
 
+        TextView article_long_video_back = view.findViewById(R.id.article_long_video_back);
+
         long_video_page.setOnClickListener(v -> {
             text_comment.clearFocus();
         });
 
         long_video_root.setOnClickListener(v -> {
             text_comment.clearFocus();
+        });
+
+        article_long_video_back.setOnClickListener(v->{
+            getActivity().finish();
         });
 
         commentAnimate(getActivity(), getContext(), text_comment, comment_icon, send_comment);

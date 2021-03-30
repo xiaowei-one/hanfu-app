@@ -35,7 +35,6 @@ public class RecommendRecyclerAdapter extends RecyclerView.Adapter<RecommendRecy
     List mList;
     Context context;
     String mDrawableName;
-    int randomNum;
 
     public RecommendRecyclerAdapter(Context context) {
         this.context = context;
@@ -45,8 +44,7 @@ public class RecommendRecyclerAdapter extends RecyclerView.Adapter<RecommendRecy
     @Override
     public RecommendRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = null;
-        Random random = new Random();
-        if (viewType < 1) {
+        if (viewType == 0) {
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.index_text, parent, false);
         } else if (viewType == 1) {
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.index_short_video, parent, false);
@@ -56,12 +54,10 @@ public class RecommendRecyclerAdapter extends RecyclerView.Adapter<RecommendRecy
             ShortVideoAdapter shortVideoAdapter = new ShortVideoAdapter(context);
             recyclerView.setAdapter(shortVideoAdapter);
         } else if (viewType > 1) {
-            int[] Numbers = {0, 0, 1, 0, 1, 0, 0, 0, 1};
-            randomNum = Numbers[random.nextInt(9)];
-            if (randomNum == 1) {
-                itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.index_long_video, parent, false);
-            } else {
+            if (viewType % 2 == 0) {
                 itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.index_text, parent, false);
+            } else {
+                itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.index_long_video, parent, false);
             }
         }
         ViewHolder viewHolder = new ViewHolder(itemView);
@@ -71,14 +67,13 @@ public class RecommendRecyclerAdapter extends RecyclerView.Adapter<RecommendRecy
     @Override
     public void onBindViewHolder(@NonNull RecommendRecyclerAdapter.ViewHolder holder, int position) {
         Intent intent = new Intent(context, ArticleActivity.class);
-        intent.putExtra("articleType", "text");
-        if (position < 1 || (position > 1 && randomNum == 0)) {
+        if (position == 0 || (position % 2 == 0)) {
             TextView article_text_text = holder.itemView.findViewById(R.id.article_text_text);
             article_text_text.setOnClickListener(v -> {
                 intent.putExtra("articleType", "text");
                 context.startActivity(intent);
             });
-        } else if (position != 1) {
+        } else if (position > 1) {
             LinearLayout article_long_video = holder.itemView.findViewById(R.id.article_long_video);
             article_long_video.setOnClickListener(v -> {
                 intent.putExtra("articleType", "longVideo");

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.Hanfu.R;
 
@@ -74,6 +75,7 @@ public class ShortVideoFragment extends Fragment {
         EditText text_comment = view.findViewById(R.id.text_comment);
         LinearLayout comment_icon = view.findViewById(R.id.comment_icon);
         CardView send_comment = view.findViewById(R.id.send_comment);
+        TextView article_short_video_back = view.findViewById(R.id.article_short_video_back);
 
         article_page.setOnClickListener(v -> {
             text_comment.clearFocus();
@@ -81,6 +83,10 @@ public class ShortVideoFragment extends Fragment {
 
         article_root.setOnClickListener(v -> {
             text_comment.clearFocus();
+        });
+
+        article_short_video_back.setOnClickListener(v->{
+            getActivity().finish();
         });
 
         commentAnimate(getActivity(), getContext(), text_comment, comment_icon, send_comment);

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.Hanfu.R;
 import com.Hanfu.adapter.PartyRankAdapter;
@@ -66,11 +67,19 @@ public class PartyRankFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_party_rank, container, false);
 
+        TextView back_title = view.findViewById(R.id.back_title);
+        back_title.setText("线下活动");
+
         RecyclerView recyclerView = view.findViewById(R.id.party_rank_list);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         PartyRankAdapter partyRankAdapter = new PartyRankAdapter(getContext());
         recyclerView.setAdapter(partyRankAdapter);
+        TextView article_text_back = view.findViewById(R.id.article_text_back);
+
+        article_text_back.setOnClickListener(v->{
+            getActivity().finish();
+        });
 
         return view;
     }

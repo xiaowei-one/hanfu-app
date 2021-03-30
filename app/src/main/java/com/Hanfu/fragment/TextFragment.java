@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.transition.TransitionManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -79,6 +80,7 @@ public class TextFragment extends Fragment {
         EditText text_comment = view.findViewById(R.id.text_comment);
         LinearLayout comment_icon = view.findViewById(R.id.comment_icon);
         CardView send_comment = view.findViewById(R.id.send_comment);
+        TextView article_text_back = view.findViewById(R.id.article_text_back);
 
         article_page.setOnClickListener(v -> {
             text_comment.clearFocus();
@@ -86,6 +88,10 @@ public class TextFragment extends Fragment {
 
         article_root.setOnClickListener(v -> {
             text_comment.clearFocus();
+        });
+
+        article_text_back.setOnClickListener(v->{
+            getActivity().finish();
         });
 
         commentAnimate(getActivity(), getContext(), text_comment, comment_icon, send_comment);
