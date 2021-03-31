@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.Hanfu.R;
 import com.Hanfu.fragment.CommodityDetailFragment;
+import com.Hanfu.fragment.MyOrdersFragment;
 import com.Hanfu.utils.StatusBarUtil;
 
 public class ShoppingActivity extends AppCompatActivity {
@@ -21,8 +23,16 @@ public class ShoppingActivity extends AppCompatActivity {
         StatusBarUtil.setStatusBarMode(this, true, R.color.white);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.shopping_root, new CommodityDetailFragment())
-                .commit();
+        String type = getIntent().getStringExtra("type");
+        if(type.equals("commodityDetail")){
+            fragmentManager.beginTransaction()
+                    .replace(R.id.shopping_root, new CommodityDetailFragment())
+                    .commit();
+        }
+        else if(type.equals("myOrders")){
+            fragmentManager.beginTransaction()
+                    .replace(R.id.shopping_root, new MyOrdersFragment())
+                    .commit();
+        }
     }
 }

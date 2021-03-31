@@ -16,4 +16,9 @@
     <color name="iconBoyColor">#4FA2D8</color>
     <color name="competitionBack">#FFEB3B</color>
     <color name="competitionBackground">#27B5FF</color>
+    <color name="circle">#F5B0B0</color>
+    <color name="bigCircle">#F57474</color>
+    <color name="gray">#cccccc</color>
+    <color name="purple">#8B76A1</color>
+    <color name="lightGrey">#F0F0F0</color>
 </resources>

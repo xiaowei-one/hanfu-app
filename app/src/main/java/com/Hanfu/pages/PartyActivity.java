@@ -9,6 +9,7 @@ import android.os.Bundle;
 import com.Hanfu.R;
 import com.Hanfu.fragment.CompetitionFragment;
 import com.Hanfu.fragment.PartyRankFragment;
+import com.Hanfu.fragment.SendPartyFragment;
 import com.Hanfu.utils.StatusBarUtil;
 
 public class PartyActivity extends AppCompatActivity {
@@ -31,6 +32,10 @@ public class PartyActivity extends AppCompatActivity {
         } else if(type.equals("online_competition")){
             fragmentManager.beginTransaction()
                     .replace(R.id.party, new CompetitionFragment())
+                    .commit();
+        } else if(type.equals("sendParty")){
+            fragmentManager.beginTransaction()
+                    .replace(R.id.party, new SendPartyFragment())
                     .commit();
         }
     }

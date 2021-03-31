@@ -21,6 +21,7 @@ import com.Hanfu.adapter.HotAdapter;
 import com.Hanfu.domain.IconPowerMenuItem;
 import com.Hanfu.pages.PartyActivity;
 import com.Hanfu.pages.SearchActivity;
+import com.Hanfu.pages.ShoppingActivity;
 import com.Hanfu.utils.IconMenuAdapter;
 import com.skydoves.powermenu.CustomPowerMenu;
 import com.skydoves.powermenu.MenuAnimation;
@@ -47,7 +48,11 @@ public class PartyFragment extends Fragment {
     private String mParam2;
 
     private final OnMenuItemClickListener<IconPowerMenuItem> onIconMenuItemClickListener = (position, item) -> {
-        Toast.makeText(getContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getContext(), PartyActivity.class);
+        if(position == 0){
+            intent.putExtra("type", "sendParty");
+            startActivity(intent);
+        }
         customPowerMenu.dismiss();
     };
 

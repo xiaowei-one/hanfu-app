@@ -19,6 +19,7 @@ import com.Hanfu.R;
 import com.Hanfu.adapter.ShoppingListsAdapter;
 import com.Hanfu.domain.IconPowerMenuItem;
 import com.Hanfu.pages.SearchActivity;
+import com.Hanfu.pages.ShoppingActivity;
 import com.Hanfu.utils.IconMenuAdapter;
 import com.skydoves.powermenu.CustomPowerMenu;
 import com.skydoves.powermenu.MenuAnimation;
@@ -41,7 +42,11 @@ public class ShoppingFragment extends Fragment {
     private CustomPowerMenu customPowerMenu;
 
     private final OnMenuItemClickListener<IconPowerMenuItem> onIconMenuItemClickListener = (position, item) -> {
-        Toast.makeText(getContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getContext(), ShoppingActivity.class);
+        if(position == 3){
+            intent.putExtra("type", "myOrders");
+            startActivity(intent);
+        }
         customPowerMenu.dismiss();
     };
 

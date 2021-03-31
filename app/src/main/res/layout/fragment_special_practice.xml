@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.SpecialPracticeFragment">
+
+    <include layout="@layout/back_part" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:alpha=".3"
+            android:background="@color/iconColor"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/all_question_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="全部    8938" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:background="@color/iconColor"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:alpha=".3"
+            android:background="@color/iconColor"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/text_question_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="文字题    8938" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:background="@color/iconColor"
+                />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/image_question_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="图片题    8938" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:alpha=".3"
+            android:background="@color/iconColor"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/anim_question_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="动画题    8938" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:background="@color/iconColor"
+                />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/video_question_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="视频题    8938" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:alpha=".3"
+            android:background="@color/iconColor"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/check_question_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="单选题    8938" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:background="@color/iconColor"
+                />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/multiple_check_question_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="多选题    8938" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:alpha=".3"
+            android:background="@color/iconColor"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/clothes_question_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="服饰历史    8938" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:background="@color/iconColor"
+                />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/structure_question_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="汉服结构    8938" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:alpha=".3"
+            android:background="@color/iconColor"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/feature_question_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="汉服特点    8938" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:background="@color/iconColor"
+                />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/shape_question_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="汉服形制    8938" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/start_answer"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="40dp"
+        android:text="开始答题"
+        />
+</LinearLayout>

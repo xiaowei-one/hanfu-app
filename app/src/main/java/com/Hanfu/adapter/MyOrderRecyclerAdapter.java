@@ -1,11 +1,9 @@
 package com.Hanfu.adapter;
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,28 +13,25 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityOptionsCompat;
-import androidx.core.util.Pair;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.Hanfu.R;
-import com.Hanfu.pages.ShoppingActivity;
 
 import java.util.List;
 
-public class ShoppingListsAdapter extends RecyclerView.Adapter<ShoppingListsAdapter.ViewHolder> {
+public class MyOrderRecyclerAdapter extends RecyclerView.Adapter<MyOrderRecyclerAdapter.ViewHolder> {
     List mList;
     Context context;
     String mDrawableName;
 
-    public ShoppingListsAdapter(Context context) {
+    public MyOrderRecyclerAdapter(Context context) {
         this.context = context;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.commodity_item, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_order_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(itemView);
         return viewHolder;
     }
@@ -45,9 +40,7 @@ public class ShoppingListsAdapter extends RecyclerView.Adapter<ShoppingListsAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(findActivity(context), ShoppingActivity.class);
-            intent.putExtra("type", "commodityDetail");
-            context.startActivity(intent);
+
         });
 
     }
@@ -59,7 +52,7 @@ public class ShoppingListsAdapter extends RecyclerView.Adapter<ShoppingListsAdap
 
     @Override
     public int getItemCount() {
-        return 30;
+        return 10;
     }
 
     @Nullable

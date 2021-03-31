@@ -2,6 +2,7 @@ package com.Hanfu.fragment;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -19,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.Hanfu.R;
+import com.Hanfu.pages.PracticeActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -92,10 +94,43 @@ public class CompetitionFragment extends Fragment {
             getActivity().finish();
         });
 
-//      专项练习跳转
-        LinearLayout special_exercises = view.findViewById(R.id.special_exercises);
-        special_exercises.setOnClickListener(v -> {
+        Intent intent = new Intent(getContext(), PracticeActivity.class);
 
+//      专项练习跳转
+        LinearLayout special_exercises = view.findViewById(R.id.special_practice);
+        special_exercises.setOnClickListener(v -> {
+            intent.putExtra("type", "special_practice");
+            startActivity(intent);
+        });
+//        错题库跳转
+        LinearLayout wrong_questions = view.findViewById(R.id.wrong_questions);
+        wrong_questions.setOnClickListener(v -> {
+            intent.putExtra("type", "wrong_questions");
+            startActivity(intent);
+        });
+//        随机练习跳转
+        LinearLayout random_practice = view.findViewById(R.id.random_practice);
+        random_practice.setOnClickListener(v -> {
+            intent.putExtra("type", "random_practice");
+            startActivity(intent);
+        });
+//        双人PK赛跳转
+        LinearLayout solo = view.findViewById(R.id.solo);
+        solo.setOnClickListener(v -> {
+            intent.putExtra("type", "solo");
+            startActivity(intent);
+        });
+//        单人挑战赛跳转
+        LinearLayout single = view.findViewById(R.id.single);
+        single.setOnClickListener(v -> {
+            intent.putExtra("type", "single");
+            startActivity(intent);
+        });
+//        排行榜跳转
+        LinearLayout rank = view.findViewById(R.id.rank);
+        rank.setOnClickListener(v -> {
+            intent.putExtra("type", "rank");
+            startActivity(intent);
         });
 
         return view;

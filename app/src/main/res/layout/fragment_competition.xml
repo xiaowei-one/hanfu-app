@@ -17,6 +17,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/wrong_questions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|center"
@@ -46,7 +47,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/special_exercises"
+                android:id="@+id/special_practice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -122,6 +123,7 @@
             </FrameLayout>
 
             <LinearLayout
+                android:id="@+id/random_practice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -159,6 +161,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/solo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -233,6 +236,7 @@
 
 
             <LinearLayout
+                android:id="@+id/single"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -257,6 +261,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/rank"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|center"
